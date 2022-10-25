@@ -83,8 +83,6 @@ function mapData(data: TagItem[], category: string) {
     data
       .filter((item) => item && item.name)
       .reduce((acc, item) => {
-        if (item.kind === 'method') return acc;
-
         switch (category) {
           case 'events':
             mapEvent(item).forEach((argType) => {
