@@ -443,6 +443,66 @@
           }
         }
       ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "./src/components/sb-dialog-working.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Custom element with distinct member / event names",
+          "name": "SbDialogWorking",
+          "tagName": "sb-dialog-working",
+          "customElement": true,
+          "members": [
+            {
+              "kind": "method",
+              "name": "doClose",
+              "description": "Close the dialog",
+              "signature": "doClose() => Promise<void>"
+            }
+          ],
+          "events": [
+            {
+              "name": "close",
+              "type": {
+                "text": "void"
+              },
+              "description": "Indicate when closing the dialog"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "./src/components/sb-dialog-broken.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Custom element with clashing member / event names",
+          "name": "SbDialogBroken",
+          "tagName": "sb-dialog-broken",
+          "customElement": true,
+          "members": [
+            {
+              "kind": "method",
+              "name": "close",
+              "description": "Close the dialog",
+              "signature": "close() => Promise<void>"
+            }
+          ],
+          "events": [
+            {
+              "name": "close",
+              "type": {
+                "text": "void"
+              },
+              "description": "Indicate when closing the dialog"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
