@@ -3,6 +3,8 @@ import type { FC } from 'react';
 import React, { Component as ReactComponent, StrictMode, Fragment } from 'react';
 import { renderElement, unmountElement } from '@storybook/react-dom-shim';
 
+import { hydrateElement } from './react-dom-hydrate';
+
 import type { RenderContext } from '@storybook/types';
 
 import type { ReactRenderer, StoryContext } from './types';
@@ -74,7 +76,12 @@ export async function renderToCanvas(
     unmountElement(canvasElement);
   }
 
-  await renderElement(element, canvasElement, storyContext?.parameters?.react?.rootOptions);
+  const ssrEnabled = canvasElement.firstElementChild?.hasAttribute('hydratable') || false;
+  if (ssrEnabled) {
+    await hydrateElement(element, canvasElement);
+  } else {
+    await renderElement(element, canvasElement);
+  }
 
   return () => unmountElement(canvasElement);
 }
