@@ -19,7 +19,7 @@ yarn start # prepares dev env (among other things)
 
 # build
 cd code
-yarn build --prod react
+yarn build --prod manager react
 
 # pack / publish
 cd ./renderers/react
