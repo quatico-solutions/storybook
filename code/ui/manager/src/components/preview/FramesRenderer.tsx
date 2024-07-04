@@ -70,13 +70,14 @@ export const FramesRenderer: FC<FramesRendererProps> = ({
     return ref.type === 'auto-inject' || ref.id === refId;
   }, {});
 
-  if (!frames['storybook-preview-iframe']) {
-    frames['storybook-preview-iframe'] = getStoryHref(baseUrl, storyId, {
-      ...queryParams,
-      ...(version && { version }),
-      viewMode,
-    });
-  }
+  // PATCH: removing the if condition forces reloading the iframe when the story changes
+  // if (!frames['storybook-preview-iframe']) {
+  frames['storybook-preview-iframe'] = getStoryHref(baseUrl, storyId, {
+    ...queryParams,
+    ...(version && { version }),
+    viewMode,
+  });
+  // }
 
   refsToLoad.forEach((ref) => {
     const id = `storybook-ref-${ref.id}`;
