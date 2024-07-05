@@ -22,7 +22,16 @@ cd code
 yarn build --prod manager react
 
 # pack / publish
-cd ./renderers/react
+cd "$(git rev-parse --show-toplevel)"/code/renderers/react
+yarn pack
+
+cd "$(git rev-parse --show-toplevel)"/code/ui/manager
 yarn pack 
-# yarn publish --access public
 ```
+
+to publish each package:
+
+* change version in `package.json` to `X.Y.Z-quatico.N`
+* make a tag `vX.Y.Z-quatico.N` and `git push --tags`
+* create relase from tag <https://github.com/quatico-solutions/storybook/tags>
+* add `tgz` as release attachment
