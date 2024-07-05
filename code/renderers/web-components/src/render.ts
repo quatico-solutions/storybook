@@ -33,6 +33,10 @@ export function renderToCanvas(
   { storyFn, kind, name, showMain, showError, forceRemount }: RenderContext<WebComponentsRenderer>,
   canvasElement: WebComponentsRenderer['canvasElement']
 ) {
+  if (canvasElement.firstElementChild?.hasAttribute('hydratable')) {
+    showMain();
+    return;
+  }
   const element = storyFn();
 
   showMain();
